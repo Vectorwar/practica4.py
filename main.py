@@ -7,15 +7,12 @@ class TextEditor:
         master.title("Editor de Texto")
         master.geometry("800x600")
 
-        # Área de texto
         self.text_area = tk.Text(master, wrap=tk.WORD, undo=True)
         self.text_area.pack(expand=True, fill='both')
-
-        # Barra de menú
+        
         self.menu_bar = tk.Menu(master)
         master.config(menu=self.menu_bar)
-
-        # Menú Archivo
+        
         file_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.menu_bar.add_cascade(label="Archivo", menu=file_menu)
         file_menu.add_command(label="Abrir (Ctrl+O)", command=self.open_file)
@@ -24,13 +21,11 @@ class TextEditor:
         file_menu.add_separator()
         file_menu.add_command(label="Salir", command=master.quit)
 
-        # Menú Editar
         edit_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.menu_bar.add_cascade(label="Editar", menu=edit_menu)
         edit_menu.add_command(label="Cambiar Color", command=self.change_color)
         edit_menu.add_command(label="Buscar y Reemplazar", command=self.find_replace)
 
-        # Atajos de teclado
         master.bind('<Control-o>', lambda event: self.open_file())
         master.bind('<Control-s>', lambda event: self.save_file())
         master.bind('<Control-n>', lambda event: self.clear_text())
